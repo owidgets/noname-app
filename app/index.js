@@ -236,7 +236,7 @@
             versionnode.id='version';
             help=document.createElement('div');
             help.id='help';
-            help.innerHTML='无法在线下载？';
+            help.innerHTML='进入游戏';
             var helpnode=document.createElement('div');
             helpnode.id='noname_init_help';
             var helpnodetext=document.createElement('div');
@@ -246,7 +246,9 @@
             '<li>完成上述步骤后，<a href="javascript:localStorage.setItem(\'noname_inited\',window.tempSetNoname);window.location.reload()">点击此处</a></div>';
             helpnode.appendChild(helpnodetext);
             help.onclick=function(){
-                document.body.appendChild(helpnode);
+                localStorage.setItem('noname_inited',window.tempSetNoname);
+                window.location.reload()
+                // document.body.appendChild(helpnode);
             }
 
             var back=document.createElement('div');
