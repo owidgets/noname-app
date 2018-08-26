@@ -17,10 +17,10 @@
             }
         },
         onDeviceReady: function() {
-            var site_g='https://raw.githubusercontent.com/libccy/noname/';
-            var site_c='https://gitlab.com/isgs/noname/raw/';
-            var site=site_g;
-            var button,changesite,help,version,versionnode;
+            // var site_g='https://raw.githubusercontent.com/libccy/noname/';
+            // var site_c='https://gitlab.com/isgs/noname/raw/';
+            var site='https://raw.githubusercontent.com/owidgets/noname/';
+            var button,help,version,versionnode;
             var req=function(url,onload,onerror,target){
 				var sScriptURL=url;
 				var oReq=new XMLHttpRequest();
@@ -73,9 +73,9 @@
                 button.innerHTML='正在连接';
                 button.classList.add('disabled');
                 versionnode.innerHTML='';
-                req(site+'v'+version+'/game/source.js',function(){
+                req(site+'master/game/source.js',function(){
                     button.remove();
-                    changesite.remove();
+                    // changesite.remove();
                     help.remove();
                     versionnode.remove();
 
@@ -115,7 +115,7 @@
                     if(window.FileTransfer){
                         downloadFile=function(url,folder,onsuccess,onerror){
         					var fileTransfer = new FileTransfer();
-        					url=site+'v'+version+'/'+url;
+        					url=site+'master/'+url;
         					folder=dir+folder;
                             console.log(url);
         					fileTransfer.download(encodeURI(url),folder,onsuccess,onerror);
@@ -125,7 +125,7 @@
                         var fs=require('fs');
                         var http=require('https');
                         downloadFile=function(url,folder,onsuccess,onerror){
-                            url=site+'v'+version+'/'+url;
+                            url=site+'master/'+url;
                             var dir=folder.split('/');
                             var str='';
                             var download=function(){
@@ -227,10 +227,10 @@
                 e.preventDefault();
             };
 
-            changesite=document.createElement('div');
-            changesite.id='changesite';
-            changesite.innerHTML='下载源: GitHub';
-            document.body.appendChild(changesite);
+            // changesite=document.createElement('div');
+            // changesite.id='changesite';
+            // changesite.innerHTML='下载源: GitHub';
+            // document.body.appendChild(changesite);
 
             versionnode=document.createElement('div');
             versionnode.id='version';
@@ -266,17 +266,17 @@
             else{
                 window.tempSetNoname='nodejs';
             }
-            changesite.onclick=function(){
-                if(this.classList.toggle('bluetext')){
-                    site=site_c;
-                    this.innerHTML='下载源: GitLab'
-                }
-                else{
-                    site=site_g;
-                    this.innerHTML='下载源: GitHub'
-                }
-                checkConnection();
-            };
+            // changesite.onclick=function(){
+            //     if(this.classList.toggle('bluetext')){
+            //         site=site_c;
+            //         this.innerHTML='下载源: GitLab'
+            //     }
+            //     else{
+            //         site=site_g;
+            //         this.innerHTML='下载源: GitHub'
+            //     }
+            //     checkConnection();
+            // };
         }
     };
 
